@@ -6,7 +6,7 @@ Supercharge your Visual Studio environment with the power of Blazory! Code Snipp
 
 ## Installation
 
-1. Download the latest release from the [Releases page](https://github.com/aglasencnik/BlazoryVS/releases) or the [Visual Studio Marketplace](https://marketplace.visualstudio.com/vs).
+1. Download the latest release from the [Releases page](https://github.com/aglasencnik/BlazoryVS/releases) or the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AmadejGlasencnik.BlazoryVS).
 2. Open Visual Studio.
 3. Navigate to `Extensions` > `Manage Extensions`.
 4. Install the downloaded package.
