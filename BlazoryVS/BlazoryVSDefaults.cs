@@ -64,7 +64,15 @@
 
         #region Settings constants
 
+        /// <summary>
+        /// Gets the name of the C# snippets setting.
+        /// </summary>
+        public const string CSharpSnippetsSettingName = "CSharpSnippets";
 
+        /// <summary>
+        /// Gets the name of the Razor snippets setting.
+        /// </summary>
+        public const string RazorSnippetsSettingName = "RazorSnippets";
 
         #endregion
     }

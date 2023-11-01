@@ -1,5 +1,8 @@
-﻿using Microsoft.VisualStudio.Shell;
+﻿using BlazoryVS.Enums;
+using BlazoryVS.Services;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using Microsoft.VisualStudio.Shell.Settings;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -34,7 +37,38 @@ namespace BlazoryVS
         {
             try
             {
+                // Gets the snippets from the specified JSON url.
+                var csharpSnippets = await SnippetService.GetSnippetsAsync(BlazoryVSDefaults.CSharpSnippetsJsonUrl, BlazoryVSDefaults.CSharpSnippetLanguage, BlazoryVSDefaults.SnippetAuthor);
+                var razorSnippets = await SnippetService.GetSnippetsAsync(BlazoryVSDefaults.RazorSnippetsJsonUrl, BlazoryVSDefaults.RazorSnippetLanguage, BlazoryVSDefaults.SnippetAuthor);
+
+                // Switch to main thread.
                 await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+
+                // Initialize settings manager.
+                var settingsManager = new ShellSettingsManager(ServiceProvider.GlobalProvider);
+
+                // Removes the placeholder snippets.
+                SnippetService.RemovePlaceholderSnippets(settingsManager);
+
+                // Gets the old snippets from the settings.
+                var oldCsharpSnippets = SettingsService.GetLastSnippets(settingsManager, SnippetType.CSharp);
+                var oldRazorSnippets = SettingsService.GetLastSnippets(settingsManager, SnippetType.Razor);
+
+                // Generates the snippet comparison reports.
+                var csharpSnippetsComparison = SnippetService.GenerateSnippetComparisonReport(csharpSnippets, oldCsharpSnippets);
+                var razorSnippetsComparison = SnippetService.GenerateSnippetComparisonReport(razorSnippets, oldRazorSnippets);
+
+                // Removes the snippets that are not in the JSON.
+                SnippetService.RemoveSnippets(settingsManager, SnippetType.CSharp, csharpSnippetsComparison.SnippetsToBeDeleted);
+                SnippetService.RemoveSnippets(settingsManager, SnippetType.Razor, razorSnippetsComparison.SnippetsToBeDeleted);
+
+                // Adds the snippets that are different than in the JSON.
+                SnippetService.ApplySnippets(settingsManager, SnippetType.CSharp, csharpSnippetsComparison.SnippetsToBeEdited);
+                SnippetService.ApplySnippets(settingsManager, SnippetType.Razor, razorSnippetsComparison.SnippetsToBeEdited);
+
+                // Update old snippets to the new ones.
+                SettingsService.SaveToLastSnippets(settingsManager, SnippetType.CSharp, csharpSnippets);
+                SettingsService.SaveToLastSnippets(settingsManager, SnippetType.Razor, razorSnippets);
             }
             catch
             {
