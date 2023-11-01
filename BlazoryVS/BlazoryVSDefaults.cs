@@ -41,6 +41,31 @@
         /// </summary>
         public const string RazorSnippetLanguage = "Razor";
 
+        /// <summary>
+        /// Gets the name of the placeholder snippet.
+        /// </summary>
+        public const string PlaceholderSnippetName = "placeholder.snippet";
+
+        #endregion
+
+        #region Blazory repository constants
+
+        /// <summary>
+        /// Gets the URL of the Blazory C# snippets JSON file.
+        /// </summary>
+        public const string CSharpSnippetsJsonUrl = "https://raw.githubusercontent.com/bartvanhoey/Blazory/master/snippets/csharp.json";
+
+        /// <summary>
+        /// Gets the URL of the Blazory Razor snippets JSON file.
+        /// </summary>
+        public const string RazorSnippetsJsonUrl = "https://raw.githubusercontent.com/bartvanhoey/Blazory/master/snippets/razor.json";
+
+        #endregion
+
+        #region Settings constants
+
+
+
         #endregion
     }
 }
