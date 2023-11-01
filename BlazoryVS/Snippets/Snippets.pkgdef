@@ -1,0 +1,7 @@
+// CSharp Snippets
+[$RootKey$\Languages\CodeExpansions\CSharp\Paths]
+"Blazory CSharp Snippets"="$PackageFolder$\Blazory CSharp Snippets"
+
+// Razor Snippets
+[$RootKey$\Languages\CodeExpansions\HTML\Paths]
+"Blazory Razor Snippets"="$PackageFolder$\Blazory Razor Snippets"
