@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" ?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="BlazoryVS.2adbd3c0-e1d8-48c0-b7ab-5c808cae260f" Version="0.1" Language="en-US" Publisher="Amadej Glasenčnik" />
+        <Identity Id="BlazoryVS.2adbd3c0-e1d8-48c0-b7ab-5c808cae260f" Version="1.0" Language="en-US" Publisher="Amadej Glasenčnik" />
         <DisplayName>BlazoryVS</DisplayName>
         <Description xml:space="preserve">Supercharge your Visual Studio environment with the power of Blazory! Code Snippets that start with an y to speed up your Blazor development process.</Description>
         <MoreInfo>https://github.com/aglasencnik/BlazoryVS</MoreInfo>
@@ -11,7 +11,6 @@
         <Icon>Resources\Icon.png</Icon>
         <PreviewImage>Resources\Icon.png</PreviewImage>
         <Tags>snippets, visual-studio, tools, csharp, vsix, razor, blazor, blazor-snippets, csharp-snippets</Tags>
-        <Preview>true</Preview>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)">
